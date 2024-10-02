@@ -12,8 +12,14 @@ def query_graph():
     return result
  
 result = query_graph()
-print(result)
 
+import requests
+
+# Use Ollama to generate a detailed response based on the retrieved answer
+ollama_url = "http://localhost:11434/api/generate"
+
+# Prepare a prompt from the graph result
+prompt = "Generate a biography based on the following information:\n\n"
 for record in result:
     print(f"{record['person']} is a {record['profession']} who worked with {record['collaborator']}.\n")
  
